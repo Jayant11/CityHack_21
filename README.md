@@ -1,6 +1,6 @@
 # SmartVision
 
-SmartVision is a social distancing detector implemented in Python with OpenCV and Tensorflow.
+SmartVision is a social distancing detector implemented in Python with OpenCV and Tensorflow.<br/>
 Take a peek at the backend program in work 😊
 
 ![](/img/result.gif)
