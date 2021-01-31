@@ -21,15 +21,12 @@ size_frame = input("Prompt the size of the image you want to get : ")
 
 
 vs = cv2.VideoCapture("../video/"+video_name)
-# Loop until the end of the video stream
-while True:    
-    # Load the frame and test if it has reache the end of the video
+while True: 
     (frame_exists, frame) = vs.read()
     frame = imutils.resize(frame, width=int(size_frame))
     cv2.imwrite("../img/static_frame_from_video.jpg",frame)
     break
 
-# Create a black image and a window
 windowName = 'MouseCallback'
 cv2.namedWindow(windowName)
 
@@ -49,11 +46,9 @@ cv2.setMouseCallback(windowName, CallBackFunc)
 
 
 if __name__ == "__main__":
-    # Check if the 4 points have been saved
     while (True):
         cv2.imshow(windowName, img)
         if len(list_points) == 4:
-            # Return a dict to the YAML file
             config_data = dict(
                 image_parameters = dict(
                     p2 = list_points[3],
@@ -65,7 +60,6 @@ if __name__ == "__main__":
                     img_path = img_path,
                     size_frame = size_frame,
                     ))
-            # Write the result to the config file
             with open('../conf/config_birdview.yml', 'w') as outfile:
                 yaml.dump(config_data, outfile, default_flow_style=False)
             break
